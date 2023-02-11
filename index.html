@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>토리네컷</title>
+		<style>
+      /* 이서윤체 폰트 적용을 위한 코드 */
+      @font-face {
+        font-family: "LeeSeoyun";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+    font-family: 'TTTtangsbudaejjigaeB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+		
+              /* body태그 자체에 css 요소 부여 */
+body {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	background-image: url("./background.png");
+}
+
+.container {
+  width: 390px;
+  background-color: rgb(143, 209, 209);
+  height: 100%;
+}
+
+.photos {
+margin-top: 30px;
+}
+
+.photo-frame{
+  background-color: rgb(255, 254, 253);
+  margin: 15px 20px;
+  height: 200px;
+  background-size: cover;
+  position: relative
+
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.f-title {
+color: rgb(255, 255, 247);
+font-family: 'TTTtangsbudaejjigaeB';
+font-size: 55px;
+margin-bottom: -5%;
+margin-top: 5%;
+}
+
+.f-date {
+color: rgb(80, 132, 132);
+font-family: "LeeSeoyun";
+font-size: 17px;
+font-weight: 500;
+}
+
+#image1 {
+background-image: url('./KakaoTalk_20230211_160010572_05.jpg');
+}
+#image2 {
+  background-image: url('./KakaoTalk_20230211_160010572_07.jpg');
+}
+#image3 {
+  background-image: url('./KakaoTalk_20230211_160010572_02.jpg');
+}
+#image4 {
+  background-image: url('./KakaoTalk_20230211_160010572_04.jpg');
+}
+
+.photo-desc {
+  font-family: "LeeSeoyun";
+  color: white;
+  background-color: black;
+  opacity: 90%;
+  width: fit-content;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+
+  position: absolute;
+  bottom: 0;
+
+  transform: translate(-50%);
+  left: 50%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.showText {
+  opacity: 0;
+}
+.hideText {
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+</style>
+ <script>
+  // 텍스트가 보여지는 기능
+// 1. 몇 번째 사진에 마우스가 올라갔는지 확인(if문)
+// 2. 해당 사진을 찾아 hideText class를 지워주고, showText는 삽입해줌
+function showText(number) {
+  if (number === 1) {
+    document.querySelector("#desc1").classList.remove("hideText");
+    document.querySelector("#desc1").classList.add("showText");
+  } else if (number === 2) {
+    document.querySelector("#desc2").classList.remove("hideText");
+    document.querySelector("#desc2").classList.add("showText");
+  } else if (number === 3) {
+    document.querySelector("#desc3").classList.remove("hideText");
+    document.querySelector("#desc3").classList.add("showText");
+  } else {
+    document.querySelector("#desc4").classList.remove("hideText");
+    document.querySelector("#desc4").classList.add("showText");
+  }
+}
+
+// 텍스트가 감춰지는 기능
+// 1. 몇 번째 사진에서 마우스가 벗어났는지 확인(if문)
+// 2. 해당 사진을 찾아 shotText class를 지워주고, hideText는 삽입해줌
+function hideText(number) {
+  if (number === 1) {
+    document.querySelector("#desc1").classList.remove("showText");
+    document.querySelector("#desc1").classList.add("hideText");
+  } else if (number === 2) {
+    document.querySelector("#desc2").classList.remove("showText");
+    document.querySelector("#desc2").classList.add("hideText");
+  } else if (number === 3) {
+    document.querySelector("#desc3").classList.remove("showText");
+    document.querySelector("#desc3").classList.add("hideText");
+  } else {
+    document.querySelector("#desc4").classList.remove("showText");
+    document.querySelector("#desc4").classList.add("hideText");
+  }
+}
+
+// 클릭 기능
+// 1. 선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
+function alertText(number) {
+	alert(`${number}번째 토리입니당..모두 귀여워오.`);
+}
+ </script>
+  </head>
+  <body>
+   <div class="container">
+     <div class="photos">
+        <div id="image1" class="photo-frame"
+        onmouseover="hideText(1)"
+        onmouseout="showText(1)"
+        onclick="alertText(1)">
+            <span id="desc1" class="photo-desc"> 두 손을 포옥 포갰어오 </span></div>
+        <div id="image2" class="photo-frame"
+        onmouseover="hideText(2)"
+        onmouseout="showText(2)"
+        onclick="alertText(2)">
+            <span id="desc2" class="photo-desc"> 옆태가 짧뚝해오.. </span></div>
+        <div id="image3" class="photo-frame"
+        onmouseover="hideText(3)"
+	      onmouseout="showText(3)"
+	      onclick="alertText(3)">
+            <span id="desc3" class="photo-desc"> 설마 내가 보이나오? </span></div>
+        <div id="image4" class="photo-frame"
+        onmouseover="hideText(4)"
+	      onmouseout="showText(4)"
+	      onclick="alertText(4)">
+            <span id="desc4" class="photo-desc"> 날이 쫌 추워오.. </span></div>
+        </div>
+     <div class="footer">
+        <p class="f-title">토리네컷</p>
+        <p class="f-date">2023.02.11</p>
+     </div>
+    </div>
+  </body>
+</html>
